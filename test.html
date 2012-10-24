@@ -1,0 +1,174 @@
+
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	
+	<script type="text/javascript" charset="utf-8" defer="defer" src="js/jqueryjs" ></script>
+	<script type="text/javascript" charset="utf-8" defer="defer" src="dropdown.js" ></script>
+	
+	<link type="text/css" rel="stylesheet" href="css/blueprint/screen.css" charset="utf-8" />
+	<!--[if lt IE 8]>
+		<link type="text/css" rel="stylesheet" media="screen" href="css/ie.css" charset="utf-8" />
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="css/dropdown.css" charset="utf-8" />
+	
+	<title>impossiblearts.com UI</title>
+</head>
+<body class="container" >
+	<div class="span-24 prepend-top">
+		<h1>impossiblearts.com UI</h1>
+		<hr />
+		<div class="span-12">
+			<form action="#" accept-charset="utf-8" method="post" >
+				<fieldset>
+					<legend>Forms UI</legend>
+					<p>
+						<label>Title</label>
+						<br />
+						<input name="title" type="text" class="title span-11" />
+					</p>
+					<p>
+						<label>Username</label>
+						<br />
+						<input name="username" type="text" class="text span-11" />
+					</p>
+					<p>
+						<label>Textarea</label>
+						<br />
+						<textarea cols="20" rows="5" ></textarea>
+					</p>
+					<p>
+						<label>Password</label>
+						<br />
+						<input name="password" type="password" class="text span-11" />
+					</p>
+					<p>
+						<input name="submit" type="submit" />
+						<input name="reset" type="reset" />
+					</p>
+				</fieldset>
+			</form>
+		</div>
+		<div class="span-12 last">
+			<div class="notice">This is a message with class <strong>.notice</strong>.</div>
+			<div class="info">This is a message with class <strong>.info</strong>.</div>
+			<div class="error">This is a message with class <strong>.error</strong>.</div>
+			<div class="success">This is a message with class <strong>.success</strong>.</div>
+			<fieldset>
+				<legend>Select, checkboxes, lists</legend>
+				<p>
+					<label>Select</label>
+					<br />
+					<select name="network" class="select" >
+						<option value="1" img="img/network.png">The first entry</option>
+						<option value="2" img="img/network.png">The second entry</option>
+						<option selected="selected" value="3" img="img/network.png">The third entry</option>
+					</select>
+				</p>
+				<p>
+					<label>Select with groups</label>
+					<br />
+					<select name="something" class="select" >
+						<option value="1">The first entry</option>
+						<optgroup label="Group 1" img="img/network.png">
+							<option value="1.1">The first entry</option>
+							<option selected="selected" value="1.2">The second entry</option>
+							<option value="1.3">The third entry</option>
+						</optgroup>
+						<optgroup label="Group 2" img="img/network.png">
+							<option value="2.1">The first entry</option>
+							<option value="2.2">The second entry</option>
+							<option value="2.3">The third entry</option>
+						</optgroup>
+					</select>
+				</p>
+				<p>
+					<label>Radiobuttons</label>
+					<br />
+					<input type="radio" value="1" />Radio Button 1
+					<br />
+					<input type="radio" value="2" />Radio Button 2
+					<br />
+					<input type="radio" value="3" />Radio Button 3
+				</p>
+				<p>
+					<label>Checkboxes</label>
+					<br />
+					<input type="checkbox"  />Checkbox 1
+					<br />
+					<input type="checkbox"  />Checkbox 2
+					<br />
+					<input type="checkbox"  />Checkbox 3
+				</p>
+			</fieldset>
+		</div>
+		<div class="span-24">
+			<fieldset>
+				<legend>Alignment</legend>
+				<p>
+					<label>Select Field</label>
+					<select>
+						<option value="1">The first entry</option>
+						<option value="2">The second entry</option>
+						<option value="3">The third entry</option>
+					</select>
+				</p>
+				<p>
+					<label>Input Title</label>
+					<input type="text" class="title" value="Input Title" />
+				</p>
+				<p>
+					<label>Select Field</label>
+					<select>
+						<option value="1">The first entry</option>
+						<option value="2">The second entry</option>
+						<option value="3">The third entry</option>
+					</select>
+					<label>Input Title</label>
+					<input type="text" class="title" value="Input Title" />
+				</p>
+			</fieldset>
+		</div>
+		<div class="span-24 inline">
+			<form class="inline">
+				<fieldset>
+					<legend>A form with class .inline</legend>
+					<div class="span-3">
+						<label for="a">Label A:</label>
+						<select id="a" name="a" >
+							<option value="0">All</option>
+						</select>
+					</div>
+					<div class="span-2">
+						some text
+					</div>
+					<div class="span-3">
+						<input type="checkbox" id="o" name="o" value="true" checked="checked" class="checkbox" />checkbox one
+					</div>
+					<div class="span-3">
+						<label for="b">Label B:</label>
+						<select id="b" name="b" >
+							<option value="0">All</option>
+						</select>
+					</div>
+					<div class="span-2">
+						<a href="">A Hyperlink</a>
+					</div>
+					<div class="span-6">
+						<input type="text" class="text span-6" id="q" name="q" value="Field with class .text" />
+					</div>
+					<div class="span-4 last">
+						<input type="submit" value="Submit" class="button span-3" />
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<hr />
+	&copy; by impossiblearts.com 2010
+	<br />
+	&nbsp;
+</body>
+</html>
