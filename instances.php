@@ -148,7 +148,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 		<div class="span10 content">
         <!-- Main hero unit for a primary marketing message or call to action -->
         <!-- Tabs -->
-          <h3>Services</h3>
+          <h3>Create Instance</h3>
           <div class="span10">
           <div class="tabbable tabs-left">
           	<ul class="span3 nav nav-tabs">

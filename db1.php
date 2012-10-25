@@ -20,6 +20,6 @@ mysql_query($sql,$link);
 //echo $sql."<br>";
 //echo $employeeId."<br>";
 //echo $cCenter;
-header('location:login.php');
+header('location:index.php');
 ob_flush();
 ?>

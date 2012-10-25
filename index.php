@@ -49,19 +49,44 @@
               <li><a href="#contact">Contact</a></li>
             </ul>  -->
             <ul class="nav pull-right">
+				<li class="dropdown">
+            		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up<b class="caret"></b></a>
+              		<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+					     <form method="post" action="reg-beta.php" id="login">
+						    <fieldset id="inputs">
+						    	<input id="firstName" name="firstName" type="text" placeholder="First Name" autofocus required>
+						        <input id="lastName" name="lastName" type="text" placeholder="Last Name" required>
+						        <input id="email1" name="email1" type="email" placeholder="Email" required>
+						        <input id="email2" name="email2" type="email" placeholder="Verify Email" required>
+						        <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" required>   
+						        <input id="password" name="password" type="password" placeholder="Password" required>
+						    </fieldset>
+						    <fieldset id="select">
+								<select class="select" name="costCenter"> 
+									<option class="option" value="">---Cost Center---</option>
+									<option class="option" value="69333">Implementation Services</option>
+									<option class="option" value="69101">Cloud Operations</option>
+									<option class="option" value="69501">SIS Operations</option>
+									<option class="option" value="69555">Quality Assurance</option>
+									<option class="option" value="69599">Development</option>
+								</select>
+						    </fieldset>
+						    <fieldset id="actions">
+						        <input type="submit" class="btn btn-primary" id="submit" value="Register">
+						        <a href="reset_password.php">Forgot your password?</a><a href="login.php">Already Have Account?</a>
+						    </fieldset>
+						</form>
+					</div>
+       			</li>
             	<li class="dropdown">
             		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-user"></b>Login<b class="caret"></b></a>
               			<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-									<form id="form" class="form-horizontal" method="post" action="login-beta.php">
+									<form id="form" class="form" method="post" action="login-beta.php">
 										<fieldset>
-  											<label class="UsernameLabel">
-  												<span>Email</span>
+  											<label class="UsernameLabel">Email</label>
 												<input type="email" id="Form_Email" name="email" value="" class="InputBox" placeholder="Email">
-											</label>
-												<label class="PasswordLabel">
-												<span>Password</span>
+												<label class="PasswordLabel">Password</label>
 												<input type="password" id="Form_Password" name="password" value="" class="InputBox Password" placeholder="Password">
-											</label>
 										</fieldset>
 											<fieldset class="RememberMe">
 											<label for="SignInRememberMe" class="CheckBoxLabel chechkbox">
@@ -72,8 +97,8 @@
 											<input type="submit" id="Form_SignIn" name="Form/Sign_In" value="Sign In" class="btn btn-primary">
 										</fieldset>
 										<p class="CreateAccount">
-											<a href="reset_password.php">Forgot password?</a>
-											<a href="form.php">Don't have an account?</a>
+											<a align="left" href="reset_password.php">Forgot password?</a>
+											<a align="left" class="modal-open" href="form.php">Don't have an account?</a>
 										</p>
 									</form>
 						</div>
