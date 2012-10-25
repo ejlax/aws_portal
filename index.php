@@ -84,9 +84,9 @@
 									<form id="form" class="form" method="post" action="login-beta.php">
 										<fieldset>
   											<label class="UsernameLabel">Email</label>
-												<input type="email" id="Form_Email" name="email" value="" class="InputBox" placeholder="Email">
+												<input type="email" id="Form_Email" name="email" value="" class="InputBox">
 												<label class="PasswordLabel">Password</label>
-												<input type="password" id="Form_Password" name="password" value="" class="InputBox Password" placeholder="Password">
+												<input type="password" id="Form_Password" name="password" value="" class="InputBox Password">
 										</fieldset>
 											<fieldset class="RememberMe">
 											<label for="SignInRememberMe" class="CheckBoxLabel chechkbox">
@@ -97,8 +97,7 @@
 											<input type="submit" id="Form_SignIn" name="Form/Sign_In" value="Sign In" class="btn btn-primary">
 										</fieldset>
 										<p class="CreateAccount">
-											<a align="left" href="reset_password.php">Forgot password?</a>
-											<a align="left" class="modal-open" href="form.php">Don't have an account?</a>
+											<a align="left" href="#password_reset" data-toggle="modal">Forgot password?</a>
 										</p>
 									</form>
 						</div>
@@ -142,7 +141,7 @@
 		    <li><a href="#rightScale" data-toggle="tab">RightScale</a></li>
 		    <li><a href="#monitoring" data-toggle="tab">Monitoring</a></li>
 		  </ul>
-		  <div class="tab-content pull-left span6 offse1">
+		  <div class="tab-content pull-left span7 offse1">
 		    <div class="tab-pane active" id="tab1">
               	<p><script type='text/javascript' charset='utf-8' src='http://scripts.hashemian.com/jss/feed.js?print=yes&numlinks=10&summarylen=50&seedate=yes&popwin=yes&url=http:%2F%2Fstatus.aws.amazon.com%2Frss%2Fec2-us-east-1.rss'></script>
 				</p>
@@ -160,6 +159,24 @@
   		</div><!--/endtab-->
         </div><!--/span-->
       </div><!--/row-->
+      <div class="modal hide fade" id="password_reset">
+      		<div class="modal-header">
+      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      			<p align="center"><h4>Password Reset</h4></p>
+      		</div>
+      		<div class="modal-body">
+      			<form class="form" method="post" action="" id="login">
+    <fieldset id="inputs">
+        <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" autofocus required><br>   
+        <input id="new_password" name="new_password" type="password" placeholder="New Password" required>
+        <input id="verify_password" name="verify_password" type="password" placeholder="Verify Password" required>
+    </fieldset>
+    <fieldset id="actions">
+        <input type="submit" class="btn btn-danger" submit" value="Reset">
+    </fieldset>
+</form>
+      		</div>
+      </div>
 
       <hr>
 
