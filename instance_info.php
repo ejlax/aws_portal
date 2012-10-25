@@ -126,10 +126,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
-              <li><a href="fluid.php">Home</a></li>
               <li><a href="instances.php">Create Instances</a></li>
               <li class="active"><a href="view_instances.php">View Instances</a></li>
-              <li class="nav-header">Billings</li>
+              <li><a href="backups.php">Backup Instances</a></li>              
+              <li class="nav-header">Security Groups and Volumes</li>
+              <li><a href="securitygroups.php">Create Security Group</a></li>
+              <li><a href="view_instances.php">View Security Groups</a></li>                
+              <li><a href="ebsvolumes.php">Create Volumes</a></li>
+              <li class="nav-header">Billings</li>                        
               <li><a href="#">MTD Costs</a></li>
               <li><a href="#">YTD Costs</a></li>
               <li><a href="#">Send Invoices</a></li>
@@ -183,6 +187,8 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				$platform = (string) $item->instancesSet->item->platform;
 				$name = (string) $item->instancesSet->item->tagSet->item->value;
 				$reason = (string) $item->instancesSet->item->stateReason->message;
+				$intIP = (string) $item->instancesSet->item->privateIpAddress;
+				$extIP = (string) $item->instancesSet->item->ipAddress;
 				$stopped = (string) $item->instancesSet->item->reason;
 				if($instanceState === 'stopped'){
 					$stopDate = explode('(',$stopped);
@@ -225,10 +231,10 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           	<dd>" . $platform ."</dd>
           	<dt>Instance Size:</dt>
           	<dd>" . $instanceType ."</dd>
-          	<p>
+          </dl>
+                    	<p>
 			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
-			</p>
-          </dl>                    
+			</p>                    
           </div>
           <div class='span4'>
           	<div>	
@@ -274,10 +280,10 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           	<dd>" . $instanceType ."</dd>
           	<dt>Password:</dt>
           	<dd>" . $password ."</dd>
-          	<p>
+          </dl> 
+                    	<p>
 			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
-			</p>
-          </dl>                    
+			</p>                   
           </div>
           <div class='span4'>
           	<div>	
@@ -326,6 +332,10 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           	<dd>" . $platform ."</dd>
           	<dt>Instance Size:</dt>
           	<dd>" . $instanceType ."</dd>
+          	<dt>Public IP:</dt>
+          	<dd>" . $extIP ."</dd>
+          	<dt>Internal IP:</dt>
+          	<dd>" . $intIP ."</dd>
           	<dt>Password:</dt>
           	<dd>" . $password ."</dd>
           </dl>                    

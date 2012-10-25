@@ -122,10 +122,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
-              <li><a href="fluid.php">Home</a></li>
               <li class="active"><a href="instances.php">Create Instances</a></li>
               <li><a href="view_instances.php">View Instances</a></li>
-              <li class="nav-header">Billings</li>
+              <li><a href="backups.php">Backup Instances</a></li>              
+              <li class="nav-header">Security Groups and Volumes</li>
+              <li><a href="securitygroups.php">Create Security Group</a></li>
+              <li><a href="view_instances.php">View Security Groups</a></li>                
+              <li><a href="ebsvolumes.php">Create Volumes</a></li>
+              <li class="nav-header">Billings</li>                        
               <li><a href="#">MTD Costs</a></li>
               <li><a href="#">YTD Costs</a></li>
               <li><a href="#">Send Invoices</a></li>
@@ -220,9 +224,69 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				</form>
            	</div>
            	<div style="overflow: visible;" class="tab-pane" id="tab2">
-           		<ol>
-           			<li>Placeholder</li>
-           		</ol>
+				<form class="form-condensed" method="post" action="create_tag.php">
+				 <div class="control-group">
+				    <label class="control-label" for="keyPair"><h5>Resource ID</h5></label>
+				    <div class="controls">
+				      <select name="resource_id">
+						<?php
+						$response = $ec2->describe_instances();
+						//print_r($response);
+							foreach($response->body->reservationSet->item as $item){
+							$instanceId = (string) $item->instancesSet->item->instanceId;
+							echo "<option value=" .$instanceId .">" . $instanceId . "</option>"; 
+							}						
+						?>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <label class="control-label" for="securityGroup"><h5>Key Name Value Pair</h5></label>
+				    <div class="controls">
+				    	<label class='control-label' for='keyName'>Key Name</label>
+				      <input type='text' name='keyName'>
+				    	<label class='control-label' for='keyName'>Key Value</label>				      
+				      <input type='text' name='keyValue'>
+				    </div>
+				  </div>
+				  <button type="submit" class="btn">Add Tag</button>
+				</form>
+           	</div>
+           	<div style="overflow: visible;" class="tab-pane" id="tab3">
+				<form class="form-condensed" method="post" action="create_vol.php">
+				 <div class="control-group">
+				    <label class="control-label" for="keyPair"><h5>Instance ID</h5></label>
+				    <p>This is the instance to which you will add the volume.</p>
+				    <div class="controls">
+				      <select name="resource_id">
+						<?php
+						$response = $ec2->describe_instances();
+						//print_r($response);
+							foreach($response->body->reservationSet->item as $item){
+							$instanceId = (string) $item->instancesSet->item->instanceId;
+							$name = (string) $item->instancesSet->item->tagSet->item->value;
+							echo "<option value=" .$instanceId .">" . $name ."-" . $instanceId . "</option>"; 
+							}						
+						?>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <label class="control-label" for="securityGroup"><h5>Volume Info</h5></label>
+				    <div class="controls">
+				    <label class='control-label' for='keyName'><h5>Volume Size (in GB)</h5></label>
+				      <input type='text' name='size'>	
+				    	<label class='control-label' for='keyName'><h5>Tag Name</h5></label>
+				    	<p>Tag name of 'name' will give the instance a reference name</p>
+				      <input type='text' name='key'>
+				    	<label class='control-label' for='keyName'>Tag Value</label>
+				    	<p>The value of the tag you want to create</p>			      
+				      <input type='text' name='value'>
+				    </div>
+				  </div>
+				  <button type="submit" class="btn">Add Tag</button>
+				</form>
+           	</div>
          	</div><!--/nav-tab-->
         	</div><!--/tabbable-->
         </div><!--/span-->

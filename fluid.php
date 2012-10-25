@@ -120,10 +120,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
-              <li class="active"><a href="#">Home</a></li>
               <li><a href="instances.php">Create Instances</a></li>
               <li><a href="view_instances.php">View Instances</a></li>
-              <li class="nav-header">Billings</li>
+              <li><a href="backups.php">Backup Instances</a></li>              
+              <li class="nav-header">Security Groups and Volumes</li>
+              <li><a href="securitygroups.php">Create Security Group</a></li>
+              <li><a href="view_instances.php">View Security Groups</a></li>                
+              <li><a href="ebsvolumes.php">Create Volumes</a></li>
+              <li class="nav-header">Billings</li>                        
               <li><a href="#">MTD Costs</a></li>
               <li><a href="#">YTD Costs</a></li>
               <li><a href="#">Send Invoices</a></li>
