@@ -308,9 +308,23 @@ if (isset($_POST['new_password']) and isset($_POST['verify_password']) and isset
 		//echo $sql."<br>";
 		list($id)=mysql_fetch_array($result);
 		//echo $id."<br>";
-		$query = "SELECT password FROM users WHERE id=$id";
-		$result = mysql_query($query);
-		list($old_pwd)=mysql_fetch_array($result);
+		$sql = "SELECT password FROM users WHERE id=$id";
+		//echo $sql;
+		$result = mysql_query($sql,$link);
+		if (!$result) { // add this check.
+    die('Invalid query: ' . mysql_error());
+		}
+		//echo $user['email'];
+		list($old_pwd) = mysql_fetch_array($result);
+
+		$sql = "SELECT email FROM users WHERE id=$id";
+		//echo $sql;
+		$result = mysql_query($sql,$link);
+		if (!$result) { // add this check.
+    die('Invalid query: ' . mysql_error());
+		}
+		//echo $user['email'];
+		list($email) = mysql_fetch_array($result);
 		$query = "UPDATE users SET password='$new_pwd' WHERE id=$id";
 		mysql_query($query,$link);
 		echo $query."<p></p>";
@@ -318,7 +332,7 @@ if (isset($_POST['new_password']) and isset($_POST['verify_password']) and isset
 		$result = mysql_query($query,$link);
 		list($new_pwd) = mysql_fetch_array($result);
 		//echo $query."<br>";
-		$to = "ericjamesadams@gmail.com";
+		$to = "$email";
 		$subject = "Password Reset";
 		$body = "Your Password has been successfully reset. Please '<a href=http://localhost:8888/TestSite/login.php>login</a>' again.";
 		if (mail($to, $subject, $body)) {
@@ -331,9 +345,7 @@ if (isset($_POST['new_password']) and isset($_POST['verify_password']) and isset
 			}
 	}else{
 		echo "<b>Passwords do not match. Please re-enter your new password.<b>";
-	} 
+	}
 }
 ob_flush();
 ?>
-
-

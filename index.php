@@ -49,7 +49,8 @@
               <li><a href="#contact">Contact</a></li>
             </ul>  -->
             <ul class="nav pull-right">
-				<li class="dropdown">
+            	<li><a href="#sign-up" data-toggle="modal">Sign Up</a></li>
+				<!--  <li class="dropdown">
             		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up<b class="caret"></b></a>
               		<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
 					     <form method="post" action="reg-beta.php" id="login">
@@ -77,7 +78,7 @@
 						    </fieldset>
 						</form>
 					</div>
-       			</li>
+     </li>  -->
             	<li class="dropdown">
             		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-user"></b>Login<b class="caret"></b></a>
               			<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
@@ -162,20 +163,52 @@
       <div class="modal hide fade" id="password_reset">
       		<div class="modal-header">
       			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      			<p align="center"><h4>Password Reset</h4></p>
+      			<p align="center"><h2>Password Reset</h2></p>
       		</div>
       		<div class="modal-body">
-      			<form class="form" method="post" action="" id="login">
-    <fieldset id="inputs">
-        <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" autofocus required><br>   
-        <input id="new_password" name="new_password" type="password" placeholder="New Password" required>
-        <input id="verify_password" name="verify_password" type="password" placeholder="Verify Password" required>
-    </fieldset>
-    <fieldset id="actions">
-        <input type="submit" class="btn btn-danger" submit" value="Reset">
-    </fieldset>
-</form>
+      			<form class="form" method="post" action="pass-reset.php" id="password_reset">
+				    <fieldset id="inputs">
+				        <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" autofocus required><br>   
+				        <input id="new_password" name="new_password" type="password" placeholder="New Password" required>
+				        <input id="verify_password" name="verify_password" type="password" placeholder="Verify Password" required>
+				    </fieldset>
+				    <fieldset id="actions">
+				        <input type="submit" class="btn btn-danger" name="submit" value="Reset">
+				    </fieldset>
+				</form>
       		</div>
+      </div>
+      <div class="modal hide fade" id="sign-up">
+      	<div class="modal-header">
+      		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      		<p align="center"><h2>Sign Up</h2></p>
+      	</div>
+      	<div class="modal-body">
+      		<form method="post" action="sign-up.php" id="login">
+			    <fieldset id="inputs">
+			    	<input id="firstName" name="firstName" type="text" placeholder="First Name" autofocus required>
+			        <input id="lastName" name="lastName" type="text" placeholder="Last Name" required>
+			        <input id="email1" name="email1" type="email" placeholder="Email" required>
+			        <input id="email2" name="email2" type="email" placeholder="Verify Email" required>
+			        <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" required>   
+			        <input id="password" name="password" type="password" placeholder="Password" required>
+			    </fieldset>
+			    <fieldset id="select">
+					<select class="select" name="costCenter" id="costCenter"> 
+						<option class="option" value="">---Cost Center---</option>
+						<option class="option" value="69333">Implementation Services</option>
+						<option class="option" value="69101">Cloud Operations</option>
+						<option class="option" value="69501">SIS Operations</option>
+						<option class="option" value="69555">Quality Assurance</option>
+						<option class="option" value="69599">Development</option>
+					</select>
+			    </fieldset>
+			    <fieldset id="actions">
+			        <input type="submit" id="submit"  class="btn btn-primary" value="Register">
+			    </fieldset>
+			
+			</form>
+      	</div>
       </div>
 
       <hr>
