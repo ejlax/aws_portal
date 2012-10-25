@@ -43,11 +43,11 @@
           </a>
           <a class="brand" href="#">AWS Portal</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <!-- <ul class="nav">
               <li class="active"><a href="index.php"><i class="icon-home icon-black"></i>Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
-            </ul>
+            </ul>  -->
             <ul class="nav pull-right">
             	<li class="dropdown">
             		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-user"></b>Login<b class="caret"></b></a>
@@ -86,7 +86,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span2">
+        <!--  <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
@@ -104,20 +104,20 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span10">
-          <div class="hero-unit">
+        <div class="span12">
+          <div class="hero-unit" align="center">
             <h1>AWS Portal</h1>
-            <p>In this portal you will be able to create new AWS instances for QA and Development purposes with the help of the AWS APIs.</p>
+            <p>Create new AWS instances, volumes for QA and Development purposes with the help of the AWS APIs, all in real-time.</p>
             <p><a class="btn btn-primary btn-large" href="//aws.amazon.com/what-is-aws/">Learn more &raquo;</a></p>
           </div>
-		<div>
+		<div class="tabbable tabs-left">
 			<h2>Live Service Updates</h2>
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs" align="center" >
 		    <li class="active"><a href="#tab1" data-toggle="tab">AWS Service Health</a></li>
 		    <li><a href="#rightScale" data-toggle="tab">RightScale</a></li>
 		    <li><a href="#monitoring" data-toggle="tab">Monitoring</a></li>
 		  </ul>
-		  <div class="tab-content">
+		  <div class="tab-content pull-left span6 offse1">
 		    <div class="tab-pane active" id="tab1">
               	<p><script type='text/javascript' charset='utf-8' src='http://scripts.hashemian.com/jss/feed.js?print=yes&numlinks=10&summarylen=50&seedate=yes&popwin=yes&url=http:%2F%2Fstatus.aws.amazon.com%2Frss%2Fec2-us-east-1.rss'></script>
 				</p>
