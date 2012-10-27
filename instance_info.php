@@ -1,58 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
-ob_start();
-session_start();
-include_once ('config/salt.php');
-include_once ('connect.php');
-//echo $_SESSION['LAST_ACTIVITY']."<br>";
-//echo time()."<br>";
-//unset($_SESSION['LAST_ACTIVITY']);
-if (!isset($_SESSION['LAST_ACTIVITY'])){
-	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='login.php'>here</a> if you are not automatically redirected.";
-	header("refresh: 5;url=index.php");
-	break;
-}
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
-    // last request was more than 15 minutes ago
-    //$_SESSION = array();     // unset $_SESSION variable for the runtime 
-    session_destroy();   // destroy session data in storage
-    $file=$_SERVER['PHP_SELF'];
-	//$_SERVER['PHP_SELF'] would /lecture8/page2.php
-	$arr=explode("/",$file);
-	$count=count($arr);
-	$file=$arr[$count-1];
-	header('Location:index.php?file='.$file);
-    echo "Your Session has expired. Please Login again.<br> Redirecting...<p></p>Click&nbsp<a href='login.php?file=".$file."'>here</a> if you are not automatically redirected.";
-	//sleep(5);//seconds to wait..
-	break;
-}
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 900)){
-		$auth = $_SESSION['salt'];
-		$pwd = $_SESSION['pwd'];
-		if(isset($_SESSION['user']) and isset($_SESSION['loginTime']) and isset($_SESSION['hash'])) {
-			$user = $_SESSION['user'];
-			$time = $_SESSION['loginTime'];
-			$hash = $_SESSION['hash'];
-			//echo $hash."<br>";
-			//echo $auth."<br>";
-			$sql = "SELECT firstName,lastName FROM users WHERE email='$user' AND password='$pwd'";
-			$result = mysql_query($sql, $link);
-			$name = mysql_fetch_array($result);
-			//echo $sql."<br>";
-			$hashCalculated = sha1($user.$time.$auth);
-			//echo $hashCalculated."<br>";
-				if ($hash != $hashCalculated) {
-				//header('location:login_form.php');
-				echo "check the log files, the user was not authenticated!";
-				}
-	}
-}
-    $file=$_SERVER['PHP_SELF'];
-	//$_SERVER['PHP_SELF'] would /lecture8/page2.php
-	$arr=explode("/",$file);
-	$count=count($arr);
-	$file=$arr[$count-1];
-
+include_once('verify.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

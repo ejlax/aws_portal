@@ -2,8 +2,14 @@
 ob_start();
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
-if($_SESSION['message']){
+if($_SESSION['message'] == 1 ){
 $error = 'Bad Username or Password. Please sign in again.';
+	}elseif($_GET['message'] == 2){
+	$error = 'Your session has timed out. Please Login again.';
+	}elseif(!isset($_GET['message'])){
+		$error = 'Something went wrong. Please sign in again.';
+	}
+	
 echo" <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -125,7 +131,5 @@ echo" <!DOCTYPE html>
 
   </body>
 </html>";
-}else{
-	include_once('index.php');
-}
+
 ?>
