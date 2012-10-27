@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ob_start();
 session_start();
-include_once ('salt.php');
+include_once ('config/salt.php');
 include_once ('connect.php');
 require_once 'AWSSDKforPHP/sdk.class.php';
 $ec2 = new AmazonEC2();

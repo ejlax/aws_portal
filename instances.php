@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ob_start();
 session_start();
-include_once ('salt.php');
+include_once ('config/salt.php');
 include_once ('connect.php');
 require_once 'AWSSDKforPHP/sdk.class.php';
 $ec2 = new AmazonEC2();
@@ -10,8 +10,8 @@ $ec2 = new AmazonEC2();
 //echo time()."<br>";
 //unset($_SESSION['LAST_ACTIVITY']);
 if (!isset($_SESSION['LAST_ACTIVITY'])){
-	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='login.php'>here</a> if you are not automatically redirected.";
-	header("refresh: 5;url=login.php");
+	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='index.php'>here</a> if you are not automatically redirected.";
+	header("refresh: 5;url=index.php");
 	break;
 }
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
@@ -23,7 +23,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 	$arr=explode("/",$file);
 	$count=count($arr);
 	$file=$arr[$count-1];
-	header('Location:login.php?file='.$file);
+	header('Location:index.php?file='.$file);
     echo "Your Session has expired. Please Login again.<br> Redirecting...<p></p>Click&nbsp<a href='login.php?file=".$file."'>here</a> if you are not automatically redirected.";
 	//sleep(5);//seconds to wait..
 	break;

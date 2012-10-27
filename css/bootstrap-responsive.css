@@ -895,11 +895,20 @@
     padding-right: 10px;
     padding-left: 10px;
   }
-  .modal {
-    top: 10px;
-    right: 10px;
-    left: 10px;
-  }
+  .modal { 
+position: fixed; 
+top: 3%; 
+right: 3%; 
+left: 3%; 
+bottom: 3%; 
+width: auto; 
+margin: 0; 
+-webkit-overflow-scrolling: touch;
+}
+.modal-body { 
+height: 30%; 
+-webkit-overflow-scrolling: touch;
+}
   .modal-header .close {
     padding: 10px;
     margin: -10px;

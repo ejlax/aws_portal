@@ -297,7 +297,7 @@ fieldset
 <?php
 session_start();
 include_once ('connect.php');
-include_once ('salt.php');
+include_once ('../config/salt.php');
 if (isset($_POST['new_password']) and isset($_POST['verify_password']) and isset($_POST['employeeId'])) {
 	$empId = ($_POST['employeeId']);
 	$new_pwd = sha1($_POST['new_password'].$pepper);

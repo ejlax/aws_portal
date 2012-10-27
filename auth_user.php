@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-include_once ('salt.php');
+include_once ('config/salt.php');
 include_once ('connect.php');
 //echo $_SESSION['LAST_ACTIVITY']."<br>";
 //echo time()."<br>";
@@ -38,7 +38,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 		else{
 		//echo "Welcome " . $name[0]."&nbsp".$name[1]. "!<br>";
 		//echo "<a href='logout.php'>Log Out</a>";
-		header('location:home.php');
+		header('location:fluid.php');
 		}
 	}
 }

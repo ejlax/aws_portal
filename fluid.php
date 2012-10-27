@@ -2,14 +2,14 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ob_start();
 session_start();
-include_once ('salt.php');
+include_once ('config/salt.php');
 include_once ('connect.php');
 //echo $_SESSION['LAST_ACTIVITY']."<br>";
 //echo time()."<br>";
 //unset($_SESSION['LAST_ACTIVITY']);
 if (!isset($_SESSION['LAST_ACTIVITY'])){
-	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='login.php'>here</a> if you are not automatically redirected.";
-	header("refresh: 5;url=login.php");
+	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='index.php'>here</a> if you are not automatically redirected.";
+	header("refresh: 5;url=index.php");
 	break;
 }
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {

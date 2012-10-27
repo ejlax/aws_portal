@@ -349,7 +349,7 @@ fieldset
 <?php
 session_start();
 include_once('connect.php');
-include_once('salt.php');
+include_once('config/salt.php');
 if(isset($_POST['firstName']) and isset($_POST['lastName']) and isset ($_POST['email1']) and isset ($_POST['email2'])and isset($_POST['employeeId']) and isset($_POST['password']) and isset($_POST['costCenter'])){
 	if ($_POST['email1'] == $_POST['email2']) {
 		$fname=$_POST['firstName'];

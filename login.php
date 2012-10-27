@@ -1,341 +1,131 @@
 <?php
 ob_start();
 error_reporting(E_ALL ^ E_NOTICE);
-?>
-<!DOCTYPE html>
-
-<html>
-<head>
-
-<title>Pearson AWS Login</title>
-<style>
-
-html, body
-{
-    height: 100%;
-}
-
-body
-{
-    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;    
-    margin: 0;
-    background-color: #d9dee2;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebeef2), to(#d9dee2));
-    background-image: -webkit-linear-gradient(top, #ebeef2, #d9dee2);
-    background-image: -moz-linear-gradient(top, #ebeef2, #d9dee2);
-    background-image: -ms-linear-gradient(top, #ebeef2, #d9dee2);
-    background-image: -o-linear-gradient(top, #ebeef2, #d9dee2);
-    background-image: linear-gradient(top, #ebeef2, #d9dee2);    
-}
-
-/*--------------------*/
-
-#login
-{
-    background-color: #cccccc;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-    background-image: -webkit-linear-gradient(top, #fff, #eee);
-    background-image: -moz-linear-gradient(top, #fff, #eee);
-    background-image: -ms-linear-gradient(top, #fff, #eee);
-    background-image: -o-linear-gradient(top, #fff, #eee);
-    background-image: linear-gradient(top, #fff, #eee);  
-    height: 240px;
-    width: 400px;
-    margin: -150px 0 0 -230px;
-    padding: 30px;
-    position: absolute;
-	top: 50%;
-    left: 50%;
-    z-index: 0;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;  
-    -webkit-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
-    -moz-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          1px 1px   0 rgba(0,   0,   0,   .1),
-          3px 3px   0 rgba(255, 255, 255, 1),
-          4px 4px   0 rgba(0,   0,   0,   .1),
-          6px 6px   0 rgba(255, 255, 255, 1),  
-          7px 7px   0 rgba(0,   0,   0,   .1);
-    box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
-          
-}
-
-#login:before
-{
-    content: '';
-    position: relative;
-    z-index: -1;
-    border: 1px dashed #ccc;
-    top: 5px;
-    bottom: 5px;
-    left: 0px;
-    right: 0px;
-    -moz-box-shadow: 0 0 0 1px #fff;
-    -webkit-box-shadow: 0 0 0 1px #fff;
-    box-shadow: 0 0 0 1px #fff;
-}
-
-/*--------------------*/
-
-h1
-{
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
-    text-transform: uppercase;
-    text-align: center;
-    color: #3366cc;
-    margin: 0 0 30px 0;
-    letter-spacing: 4px;
-    font: normal 26px/1 Verdana, Helvetica;
-    position: relative;
-}
-
-h1:after, h1:before
-{
-    background-color: #3366cc;
-    content: "";
-    height: 1px;
-    position: absolute;
-    top: 15px;
-    width: 120px;   
-}
-
-h1:after
-{ 
-    background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
-    background-image: -webkit-linear-gradient(left, #777, #fff);
-    background-image: -moz-linear-gradient(left, #777, #fff);
-    background-image: -ms-linear-gradient(left, #777, #fff);
-    background-image: -o-linear-gradient(left, #777, #fff);
-    background-image: linear-gradient(left, #777, #fff);      
-    right: 0;
-}
-
-h1:before
-{
-    background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
-    background-image: -webkit-linear-gradient(right, #777, #fff);
-    background-image: -moz-linear-gradient(right, #777, #fff);
-    background-image: -ms-linear-gradient(right, #777, #fff);
-    background-image: -o-linear-gradient(right, #777, #fff);
-    background-image: linear-gradient(right, #777, #fff);
-    left: 0;
-}
-
-/*--------------------*/
-
-fieldset
-{
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-/*--------------------*/
-
-#inputs input
-{
-    background: #f1f1f1 url(http://www.red-team-design.com/wp-content/uploads/2011/09/login-sprite.png) no-repeat;
-    padding: 15px 15px 15px 30px;
-    margin: 0 0 10px 0;
-    width: 353px; /* 353 + 2 + 45 = 400 */
-    border: 1px solid #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-}
-
-#email
-{
-    background-position: 5px -2px !important;
-    font: normal 18px/1 Verdana, Helvetica;
-    	color: #003399;
-}
-
-#password
-{
-    background-position: 5px -52px !important;
-    font: normal 18px/1 Verdana, Helvetica;
-}
-
-#inputs input:focus
-{
-    background-color: #fff;
-    border-color: #3366CC;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #e8c291 inset;
-    -webkit-box-shadow: 0 0 0 1px #e8c291 inset;
-    box-shadow: 0 0 0 1px #e8c291 inset;
-}
-
-/*--------------------*/
-#actions
-{
-    margin: 25px 0 0 0;
-}
-
-#submit
-{		
-    background-color: #BBBBBB;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#BBBBBB), to(#AAAAAA));
-    background-image: -webkit-linear-gradient(top, #BBBBBB, #AAAAAA);
-    background-image: -moz-linear-gradient(top, #3366CC, #003366);
-    background-image: -ms-linear-gradient(top, #3366CC, #003366);
-    background-image: -o-linear-gradient(top, #3366CC, #003366);
-    background-image: linear-gradient(top, #3366CC, #003366);
-    
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    
-    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-    
-     -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
-    
-    border-width: 1px;
-    border-style: solid;
-    border-color: #CCCCCC;
-
-    float: left;
-    height: 35px;
-    padding: 0;
-    width: 120px;
-    cursor: pointer;
-    font: bold 15px Arial, Helvetica;
-    color: #CCCCCC;
-}
-
-#submit:hover,#submit:focus
-{		
-    background-color: #3366CC;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3366CC), to(#003366));
-    background-image: -webkit-linear-gradient(top, #3366CC, #003366);
-    background-image: -moz-linear-gradient(top, #3366CC, #003366);
-    background-image: -ms-linear-gradient(top, #3366CC, #003366);
-    background-image: -o-linear-gradient(top, #3366CC, #003366);
-    background-image: linear-gradient(top, #3366CC, #003366);
-}	
-
-#submit:active
-{		
-    outline: none;
-   
-     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
-}
-
-#submit::-moz-focus-inner
-{
-  border: none;
-}
-
-#actions a
-{
-    color: #AAA;    
-    float: right;
-    line-height: 35px;
-    margin-left: 10px;
-}
-
-/*--------------------*/
-
-#back
-{
-    display: block;
-    text-align: center;
-    position: relative;
-    top: 60px;
-    color: #999;
-}
-
-
-</style>
-</head>
-
-<body>
-<div id="login">
-	<form method="post" id="login">
-    	<h1>Log In</h1>
-    	<fieldset id="inputs">
-        	<input id="email" name="email"type="text" placeholder="Username" autofocus required>   
-        	<input id="password" name="password" type="password" placeholder="Password" required>
-
-    	</fieldset>
-    	<fieldset id="actions">
-        	<input type="submit" id="submit" value="Log in">
-        <a href="reset_password.php">Forgot your password?</a><a href="form.php">Register</a>
-    	</fieldset>
-	</form>
-</div>
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/nav.js"></script>
-		<script type="text/javascript" src="js/button-disable.js"></script>
-</body>
-</html>
-<?php
-include_once ('connect.php');
-include_once ('salt.php');
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
-    // last request was more than 30 minutes ago clear session info
-    session_unset();     // unset $_SESSION variable for the runtime 
-    session_destroy();   // destroy session data in storage
-}
-if (!isset($_SESSION['LAST_ACTIVITY'])) {
 session_start();
-	if (isset($_POST['email']) and isset($_POST['password'])) {
-		$user = $_POST['email'];
-		$pwd = sha1($_POST['password'].$pepper);
-		$sql = "SELECT COUNT(id) FROM users WHERE email='$user' AND password='$pwd'";
-		$sql1 = "SELECT salt FROM users WHERE email='$user' AND password='$pwd'";
-		$sql2 = "SELECT email,password FROM users WHERE email='$user'";
-		$result= mysql_query($sql2,$link);
-		$email = mysql_fetch_array($result); 
-		if($email[0] == $user){ 
-			$result = mysql_query($sql, $link);
-			$result2 = mysql_query($sql1, $link);
-			list($salt1) = mysql_fetch_array($result2);
-			list($count) = mysql_fetch_array($result);
-			if ($count > 0) {
-				$_SESSION['salt'] = $salt1;
-				$_SESSION['pwd'] = $pwd;
-				$_SESSION['user'] = $user;
-				$_SESSION['LAST_ACTIVITY'] = time(); 
-				$time = time();
-				$_SESSION['loginTime'] = $time;
-				$hash = sha1($user.$time.$salt1);
-				$_SESSION['hash'] = $hash;
-				//header('location:fluid.php');
-				if (isset($_GET['file'])) {
-					$file = $_GET['file'];
-					header('location:'.$file);
-					}else{
-						header('location:fluid.php');
-					}
-				}				header('location:fluid.php');
-			echo "Bad Username or Password. <a href='reset_password.php'>Reset Password?</a><br>";
-			}else{
-		echo "Bad Username or Password. <a href='reset_password.php'>Reset Password?</a><br>";
-		}
-	}
+if($_SESSION['message']){
+$error = 'Bad Username or Password. Please sign in again.';
+echo" <!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>Bootstrap, from Twitter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name='description' content=''>
+    <meta name='author' content=''>
+
+    <!-- Le styles -->
+    <link href='css/bootstrap.css' rel='stylesheet'>
+    <style type='text/css'>
+      body {
+        padding-top: 40px;
+        padding-bottom: 10px;
+      }
+    </style>
+    <link href='css/bootstrap-responsive.css' rel='stylesheet'>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel='shortcut icon' href='ico/favicon.ico'>
+    <link rel='apple-touch-icon-precomposed' sizes='144x144' href='ico/apple-touch-icon-144-precomposed.png'>
+    <link rel='apple-touch-icon-precomposed' sizes='114x114' href='ico/apple-touch-icon-114-precomposed.png'>
+    <link rel='apple-touch-icon-precomposed' sizes='72x72' href='ico/apple-touch-icon-72-precomposed.png'>
+    <link rel='apple-touch-icon-precomposed' href='ico/apple-touch-icon-57-precomposed.png'>
+  </head>
+
+  <body>
+
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container-fluid'>
+          <a class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a class='brand' href='#'>AWS Portal</a>
+          <div class='nav-collapse collapse'>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class='alert alert-error'>
+  <button type='button' class='close' data-dismiss='alert'>×</button>
+  <h4 align='center'>Uh Oh! ".$error."</h4>
+		</div>
+	<div class='container'>
+          <div class='hero-unit' align='center'>
+            <h1>AWS Portal</h1>
+            <p>Create new AWS instances, volumes for QA and Development purposes with the help of the AWS APIs, all in real-time.</p>
+            <p><a class='btn btn-primary btn-large' href='//aws.amazon.com/what-is-aws/'>Learn more &raquo;</a></p>
+          </div>
+
+      <div class='row-fluid'>
+          <div class='accordion' id='accordion2'>
+			  <div class='accordion-group'>
+			    <div class='accordion-heading'>
+			      <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion2' href='#collapseOne'>
+			        Login
+			      </a>
+			    </div>
+			    <div id='collapseOne' class='accordion-body collapse in'>
+			      <div class='accordion-inner'>
+			        <form id='login' class='form-horizontal' method='post' action='login-beta.php'>
+										<fieldset>
+  											<label class='UsernameLabel'>Email</label>
+												<input type='email' id='Form_Email' name='email' class='InputBox' required>
+												<label class='PasswordLabel'>Password</label>
+												<input type='password' id='Form_Password' name='password' class='InputBox Password' required>
+												<input type='hidden' name='file' value=''>
+											<input type='submit' name='submit' value='Sign In' class='btn btn-primary'>
+										</fieldset>
+									</form>
+			      </div>
+			    </div>
+			  </div>
+			  <div class='accordion-group'>
+			    <div class='accordion-heading'>
+			      <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo'>
+			        Forgot Password?
+			      </a>
+			    </div>
+			    <div id='collapseTwo' class='accordion-body collapse'>
+			      <div class='accordion-inner'>
+			        	<form class='form' method='post' action='pass-reset.php' id='password_reset'>
+						    <fieldset id='inputs'>
+						        <input id='employeeId' name='employeeId' type='text' placeholder='Employee ID' autofocus required><br>   
+						        <input id='new_password' name='new_password' type='password' placeholder='New Password' required>
+						        <input id='verify_password' name='verify_password' type='password' placeholder='Verify Password' required>
+						    </fieldset>
+						    <fieldset id='actions'>
+						        <input type='submit' class='btn btn-danger' name='submit' value='Reset'>
+						    </fieldset>
+						</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+		<hr>
+
+      <footer>
+        <!--  <p>&copy; Company 2012</p>  -->
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    <script src='js/bootstrap.js'></script>
+
+  </body>
+</html>";
+}else{
+	include_once('index.php');
 }
-ob_flush();
 ?>

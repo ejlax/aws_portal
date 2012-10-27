@@ -2,14 +2,14 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ob_start();
 session_start();
-include_once ('salt.php');
+include_once ('config/salt.php');
 include_once ('connect.php');
 //echo $_SESSION['LAST_ACTIVITY']."<br>";
 //echo time()."<br>";
 //unset($_SESSION['LAST_ACTIVITY']);
 if (!isset($_SESSION['LAST_ACTIVITY'])){
 	echo "You are not logged in. Redirecting you to the login page.<br>Click&nbsp<a href='login.php'>here</a> if you are not automatically redirected.";
-	header("refresh: 5;url=login.php");
+	header("refresh: 5;url=index.php");
 	break;
 }
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
@@ -21,7 +21,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 	$arr=explode("/",$file);
 	$count=count($arr);
 	$file=$arr[$count-1];
-	header('Location:login.php?file='.$file);
+	header('Location:index.php?file='.$file);
     echo "Your Session has expired. Please Login again.<br> Redirecting...<p></p>Click&nbsp<a href='login.php?file=".$file."'>here</a> if you are not automatically redirected.";
 	//sleep(5);//seconds to wait..
 	break;
@@ -232,9 +232,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           	<dt>Instance Size:</dt>
           	<dd>" . $instanceType ."</dd>
           </dl>
-                    	<p>
-			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
-			</p>                    
+                    
           </div>
           <div class='span4'>
           	<div>	
@@ -258,6 +256,13 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				  <button type='submit' class='btn'>Terminate Instance</button>
 				</form>
 			</div> 
+			</div>
+			<div class='row-fluid'>
+				<div class='span3 pull-left'>
+			<p>
+			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
+			</p>
+				</div>
 			</div> 
         ";}
         if ($instanceState == "stopped" && $platform == 'windows') {
@@ -280,10 +285,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
           	<dd>" . $instanceType ."</dd>
           	<dt>Password:</dt>
           	<dd>" . $password ."</dd>
-          </dl> 
-                    	<p>
-			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
-			</p>                   
+          </dl>                   
           </div>
           <div class='span4'>
           	<div>	
@@ -314,7 +316,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				  <button type='submit' class='btn'>Get Admin Password</button>
 				</form>
 			</div> 
-			</div> 
+			</div>
+						<div class='row-fluid'>
+				<div class='span3 pull-left'>
+			<p>
+			<h5>" . $reason ." on ". $timeStopped[0] . "</h5>
+			</p>
+				</div>
+			</div>  
         ";}
         if ($instanceState == "running" && $platform == 'windows') {
           echo "<div class='row-fluid span10'>
