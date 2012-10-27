@@ -53,7 +53,7 @@ error_reporting(E_ALL ^ E_NOTICE);
             </ul>  -->
             <ul class='nav pull-right'>
             	<li><a href='#sign-up' data-toggle='modal'>Sign Up</a></li>
-            	<li><a class='hidden-desktop' href='#login' data-toggle='modal'>Login</a></li>
+            	<li><a class='hidden-desktop' href='#stack1' data-toggle='modal'>Login</a></li>
      			<li class='dropdown hidden-tablet hidden-phone'>
             		<a href='#' class='dropdown-toggle' data-toggle='dropdown'><b class='icon-user'></b>Login<b class='caret'></b></a>
               			<div class='dropdown-menu' style='padding: 15px; padding-bottom: 0px;'>
@@ -84,7 +84,7 @@ error_reporting(E_ALL ^ E_NOTICE);
             <p><a class='btn btn-primary btn-large' href='//aws.amazon.com/what-is-aws/'>Learn more &raquo;</a></p>
           </div>
 
-      <div class='modal hide fade' id='password_reset'>
+      <div class='modal hide fade' id='stack2'>
       		<div class='modal-header'>
       			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
       			<p align='center'><h2>Password Reset</h2></p>
@@ -134,7 +134,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 			</form>
       	</div>
       </div>
-      <div class='modal hide fade' id='login'>
+      <div class='modal hide fade' id='stack1'>
       	<div class='modal-header'>
       		<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
       		<p><h2>Login</h2></p>
@@ -150,7 +150,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 											<input type='submit' id='Form_SignIn' name='Form/Sign_In' value='Sign In' class='btn btn-primary'>
 										</fieldset>
 										<p class='CreateAccount'>
-											<a align='left' href='#password_reset' data-toggle='modal'>Forgot password?</a>
+											<a align='left' href='#stack2' data-toggle='modal'>Forgot password?</a>
 										</p>
 									</form>
       	</div>
@@ -169,6 +169,73 @@ error_reporting(E_ALL ^ E_NOTICE);
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script src='js/bootstrap.js'></script>
+    <script src='js/bootstrap-manager.js'</script>
+    	<script src='js/bootstrap-modal.js'></script>
+    	<script id="dynamic" type="text/javascript">
+$('.dynamic .demo').click(function(){
+  var tmpl = [
+    // tabindex is required for focus
+    '<div class="modal hide fade" tabindex="-1">',
+      '<div class="modal-header">',
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+        '<h3>Modal header</h3>', 
+      '</div>',
+      '<div class="modal-body">',
+        '<p>Test</p>',
+      '</div>',
+      '<div class="modal-footer">',
+        '<a href="#" data-dismiss="modal" class="btn">Close</a>',
+        '<a href="#" class="btn btn-primary">Save changes</a>',
+      '</div>',
+    '</div>'
+  ].join('');
+  
+  $(tmpl).modal();
+});
+</script>
+
+<script id="custom-manager" type="text/javascript">
+// provide the container for all assigned modals to the manager
+var myManager = new ModalManager($('.custom-manager'));
+
+$('.custom-manager .demo').on('click', function(){
+  // helper function for modal creation
+  myManager.createModal($('#myModal')); 
+  
+  /* Alternatively:
+  $('#myModal').modal({ manager: myManager });
+  */
+});
+</script>
+
+<script id="ajax" type="text/javascript">
+// NOTE: modal must be in the DOM before calling .load()
+var $modal = $('#ajax-modal');
+
+$('.ajax .demo').on('click', function(){
+  // create the backdrop and wait for next modal to be triggered
+  GlobalModalManager.loading();
+
+  setTimeout(function(){
+     $modal.load('modal_ajax_test.html', '', function(){
+      $modal.modal();
+    });
+  }, 1000);
+});
+
+$modal.on('click', '.update', function(){
+  $modal.modal('loading');
+  setTimeout(function(){
+    $modal
+      .modal('loading')
+      .find('.modal-body')
+        .prepend('<div class="alert alert-info fade in">' +
+          'Updated!<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+        '</div>');
+  }, 1000);
+});
+
+</script>
 
   </body>
 </html>
