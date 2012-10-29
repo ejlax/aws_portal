@@ -17,7 +17,8 @@ if(isset($_POST['firstName']) and isset($_POST['lastName']) and isset ($_POST['e
 		list($count)=mysql_fetch_array($result);
 		//echo $count."<br>";
 		if ($count>0){
-			echo "That EmployeeId or Email already has an account. Did you "."<a href='reset_password.php'>forget</a>"." your password?";
+			header('location:login.php?message=4');
+			//echo "That EmployeeId or Email already has an account. Did you "."<a href='reset_password.php'>forget</a>"." your password?";
 		}else{
 			$query="SELECT COUNT(id) FROM users where email = '$email'";
 			//echo $query."<br>";
@@ -25,7 +26,8 @@ if(isset($_POST['firstName']) and isset($_POST['lastName']) and isset ($_POST['e
 			list($count)=mysql_fetch_array($result);
 			//echo $count."<br>";
 			if ($count>0){
-			echo "That EmployeeId or Email already has an account. Did you "."<a href='reset_password.php'>forget</a>"." your password?";
+				header('location:login.php?message=4');
+			//echo "That EmployeeId or Email already has an account. Did you "."<a href='reset_password.php'>forget</a>"." your password?";
 			}else{
 				$_SESSION['empId'] = $employeeId;
 				$_SESSION['cCenter'] = $cCenter;

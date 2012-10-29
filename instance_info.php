@@ -1,5 +1,7 @@
 <?php
 include_once('verify.php');
+require_once 'AWSSDKforPHP/sdk.class.php';
+$ec2 = new AmazonEC2();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -421,6 +423,6 @@ include_once('verify.php');
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="bootstrap.js"></script>
   </body>
 </html>

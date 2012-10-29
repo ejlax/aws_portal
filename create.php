@@ -1,5 +1,5 @@
 <?php
-// For AWS PHP SDK
+ob_start();
 require_once 'AWSSDKforPHP/sdk.class.php';
 $ec2 = new AmazonEC2();
 //Get data from HTTP GET
@@ -8,58 +8,6 @@ $instancetype = $_POST['instanceType'];
 $region = $_POST['region'];
 $securitygroup = $_POST['securityGroupName'];
 $keyName = $_POST['keyPair'];
-
- 
-/* Create a new security group.
-$response = $ec2->create_security_group ( 'GettingStartedGroup', 'Getting Started Security Group');
-if (!$response->isOK())
-{
-	if (((string) $response->body->Errors->Error->Code) === 'InvalidGroup.Duplicate')
-	{
-		// This means that the group is already created, so ignore.
-		echo 'create_security_group returned an acceptable error: ' . $response->body->Errors->Error->Message . PHP_EOL;
-	} else {
-		print_r($response);
-		exit();
-	}
-}
-
-// TODO - Change the code below to use your external ip address. 
-$ip_source = '0.0.0.0/0';
-
-// Open up port 22 for TCP traffic to the associated IP
-// from above (e.g. ssh traffic).
-$ingress_opt = array(
-	'GroupName' => 'GettingStartedGroup',
-	'IpPermissions' => array(
-		array(
-			'IpProtocol' => 'tcp',
-			'FromPort' => '22',
-			'ToPort' => '22',
-			'IpRanges' => array(
-				array('CidrIp' => $ip_source),
-			)
-    )
-	)
-);
-
-// Authorize the ports to be used.
-$response = $ec2->authorize_security_group_ingress($ingress_opt);
-if (!$response->isOK()) 
-{
-	if (((string) $response->body->Errors->Error->Code) === 'InvalidPermission.Duplicate') 
-	{
-		echo 'authorize_security_group_ingress returned an acceptable error: ' .$response->body->Errors->Error->Message .PHP_EOL;
-	} else {
-		print_r($response);
-		exit();
-	}
-}
-*/
-// Setup the specifications of the launch. This includes the
-// instance type (e.g. t1.micro) and the latest Amazon Linux
-// AMI id available. Note, you should always use the latest
-// Amazon Linux AMI id or another of your choosing.
 $ec2->set_hostname('ec2.us-east-1.amazonaws.com');
 $response = $ec2->run_instances($image_id, 1, 1, array(
     InstanceType => $instancetype,
@@ -88,7 +36,7 @@ $response = $ec2->run_instances($image_id, 1, 1, array(
 				
 			echo "Request, " . $requestID .", was unsuccessful. The error was: " . $errorMessage . " .";
 			echo "<p>";
-			print_r($_POST);
+			//print_r($_POST);
 			
 	}
 	exit();

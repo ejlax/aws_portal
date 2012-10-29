@@ -6,15 +6,16 @@ if($_SESSION['message'] == 1 ){
 $error = 'Bad Username or Password. Please sign in again.';
 	}elseif($_GET['message'] == 2){
 	$error = 'Your session has timed out. Please Login again.';
+	}elseif($_GET['message'] == 4){
+	$error = 'That EmployeeId already has an account.';
 	}elseif(!isset($_GET['message'])){
 		$error = 'Something went wrong. Please sign in again.';
 	}
-	
 echo" <!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
-    <title>Bootstrap, from Twitter</title>
+    <title>Pearson AWS Portal</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta name='description' content=''>
     <meta name='author' content=''>

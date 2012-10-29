@@ -1,5 +1,7 @@
 <?php
 include_once('verify.php');
+require_once 'AWSSDKforPHP/sdk.class.php';
+$ec2 = new AmazonEC2();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +14,8 @@ include_once('verify.php');
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="bootstrap.js"></script>
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -106,16 +110,19 @@ include_once('verify.php');
 		  </ul>
 		  <div class="tab-content">
 		    <div class="tab-pane active" id="tab1">
+		    	<h3>Test</h3>
               	<p><script type='text/javascript' charset='utf-8' src='http://scripts.hashemian.com/jss/feed.js?print=yes&numlinks=10&summarylen=50&seedate=yes&popwin=yes&url=http:%2F%2Fstatus.aws.amazon.com%2Frss%2Fec2-us-east-1.rss'></script>
 				</p>
 			  </p>
 		    </div>
 		    <div class="tab-pane" id="rightScale">
+		    	<h3>Test</h3>
 		      <p><script type='text/javascript' charset='utf-8' src='http://scripts.hashemian.com/jss/feed.js?print=yes&numlinks=10&summarylen=50&seedate=yes&popwin=no&url=http:%2F%2Fmy.rightscale.com%2Facct%2F19654%2Fuser_notifications%2Ffeed.atom%3Ffeed_token%3Dfada3a148e2f4effb8e2868a134448e13e466964'>
 				</script>
 				</p>
 		    </div>
 		    <div class="tab-pane" id="monitoring">
+		    	<h3>Test</h3>
 		      <p><a href="#"><img src="https://my.rightscale.com/sketchy1-57/hosts/01-2320B2G/plugins/load/views/load.png?title=prd-mdb-01&period=day&clip=&size=small&deployment_title=&tok=pV4BcejSDhqFWmE0FHDs1AA&tz=America%2FDenver&t=1350079184736"></a></p>
 		    </div>
 		  </div>
@@ -136,5 +143,7 @@ include_once('verify.php');
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="bootstrap.js"></script>
+    <!--  <script src="js/bootstrap-tabs.js"></script>  -->
   </body>
 </html>
