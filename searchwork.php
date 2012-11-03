@@ -600,4 +600,61 @@
 			</div>
         ";}				
 	}
+	
+	if($_GET['filter'] == 5){
+				$search = $_GET['search'];
+				$response = $ec2->describe_instances(array(
+				'Filter' => array(
+				array('Name' => 'availability-zone', 'Value' => $search),
+				
+				)));
+				$i=0;
+				foreach($response->body->reservationSet->item as $item){
+				$i++;
+				}	
+				if($i == 0){
+					echo "There were no instances found for the criteria: Filter=Availbility Zone and Search Term=".$search;
+					exit();
+				}
+				echo "<h5>".$i." Instances matched that query.</h5><br>";
+				echo "<div class='table'>";
+				echo "<table id='instances' class='table-condensed table-bordered table-striped table-hover' align='center'>";
+				echo "<thead><tr class='info'><th>Instance&nbsp;Name</th><th>InstanceId</th><th>AMI&nbsp;ID</th><th>InstanceState</th><th>InstanceType</th><th>InstanceTime</th><th>Time&nbspStopped</th><th>AZ</th><th>OS</td>";
+				echo "<tbody>";
+				foreach($response->body->reservationSet->item as $item){
+					$count++;
+					$instanceId = (string) $item->instancesSet->item->instanceId;
+					$imageId = (string) $item->instancesSet->item->imageId;
+					$instanceState = (string) $item->instancesSet->item->instanceState->name;
+					$instanceType = (string) $item->instancesSet->item->instanceType;
+					$instanceTime = (string) $item->instancesSet->item->launchTime;
+					$instanceLoc = (string) $item->instancesSet->item->placement->availabilityZone;
+					$platform = (string) $item->instancesSet->item->platform;
+					$name = (string) $item->instancesSet->item->tagSet->item->value;
+					$reason = (string) $item->instancesSet->item->stateReason->message;
+					$stopped = (string) $item->instancesSet->item->reason;
+					if($instanceState === 'stopped'){
+						$stopDate = explode('(',$stopped);
+						$stopDate1 = explode(')',$stopDate[1]);
+						$timeStopped = explode(' G',$stopDate1[0]);
+					$date = explode('T',$instanceTime);
+					$date1 = explode('.',$date[1]);					
+					}
+					if ($platform === 'windows') {	
+					} else{
+					$platform = 'linux';
+					}
+					if ($name === '') {
+						$name = '--- No Name ---';	
+					} 
+				echo "<tr><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $name . " </td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceId . "</td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $imageId . "</td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceState . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceType . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $date[0]."&nbsp" .$date1[0]. " </td> <td><a href='instance_info.php?instanceId=".$instanceId."'> " . $timeStopped[0] . " </td> <td><a href='instance_info.php?instanceId=".$instanceId."'> " . $instanceLoc . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $platform . "</a></td></tr>";
+				
+				}	
+				echo "</tbody></table></div>";
+	}
+	if ($_GET['filter'] == 3 and $search == 'linux') {
+		echo "Unable to search by Platform for Linux due to AWS API constraints, please search again.";
+	}
+	
+	
 ?>
