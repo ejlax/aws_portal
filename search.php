@@ -68,12 +68,17 @@ $ec2 = new AmazonEC2();
           </div><!--/.nav-collapse -->
         </div>
       </div>
+                  <ul class="breadcrumb hidden-desktop">
+			  <li><a href="fluid.php">Home</a> <span class="divider">/</span></li>
+			  <li><a href="instances.php">Instances</a> <span class="divider">/</span></li>
+			  <li class="active">Search</li>
+			</ul>
     </div>
 
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <div class="well sidebar-nav">
+          <div class="well sidebar-nav hidden-phone">
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
               <li><a href="instances.php">Create Instances</a></li>
