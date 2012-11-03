@@ -139,7 +139,7 @@ include_once('verify.php');
 					if ($name === '') {
 						$name = '--- No Name ---';	
 					} 
-				echo "<tr><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $name . " </td><td> " . $instanceId . " </td> <td>" . $imageId . "</td> <td>" . $instanceState . "</td> <td>" . $instanceType . "</td> <td>" . $date[0]."&nbsp" .$date1[0]. " </td> <td> " . $timeStopped[0] . " </td> <td> " . $instanceLoc . "</td> <td>" . $platform . "</a></td></tr>";
+				echo "<tr><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $name . " </td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceId . "</td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $imageId . "</td><td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceState . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $instanceType . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $date[0]."&nbsp" .$date1[0]. " </td> <td><a href='instance_info.php?instanceId=".$instanceId."'> " . $timeStopped[0] . " </td> <td><a href='instance_info.php?instanceId=".$instanceId."'> " . $instanceLoc . "</td> <td><a href='instance_info.php?instanceId=".$instanceId."'>" . $platform . "</a></td></tr>";
 				
 				}	
 				echo "</tbody></table>";
