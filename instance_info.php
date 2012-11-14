@@ -76,7 +76,7 @@ $ec2 = new AmazonEC2();
             <ul class="nav nav-list">
               <li class="nav-header">Instances</li>
               <li><a href="instances.php">Create Instances</a></li>
-              <li class="active"><a href="view_instances.php">View Instances</a></li>
+              <li class="active"><a href="search.php">Search Instances</a></li>
               <li><a href="backups.php">Backup Instances</a></li>              
               <li class="nav-header">Security Groups and Volumes</li>
               <li><a href="securitygroups.php">Create Security Group</a></li>
