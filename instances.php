@@ -46,7 +46,7 @@ $ec2 = new AmazonEC2();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">AWS Portal</a>
+          <a class="brand" href="fluid.php">AWS Portal</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#"><i class="icon-home icon-black"></i>Home</a></li>
@@ -57,9 +57,9 @@ $ec2 = new AmazonEC2();
             	<li class="dropdown">
             		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-user"></b>Welcome,&nbsp;<?php echo $name[firstName]."&nbsp".$name[lastName];?><b class="caret"></b></a>
               		<ul class="dropdown-menu">
-						<li><a href='#'>Settings</a></li>  
+						<!--  <li><a href='#'>Settings</a></li>  
 		                <li><a href='#'>Profile</a></li>  
-		                <li class='divider'></li>  
+		                <li class='divider'></li>   -->
 		                <li><a href='logout.php'>Logout</a></li>
               		</ul>
           		<li>
@@ -85,15 +85,15 @@ $ec2 = new AmazonEC2();
               <li><a href="backups.php">Backup Instances</a></li>              
               <li class="nav-header">Security Groups and Volumes</li>
               <li><a href="securitygroups.php">Create Security Group</a></li>
-              <li><a href="view_instances.php">View Security Groups</a></li>                
-              <li><a href="ebsvolumes.php">Create Volumes</a></li>
-              <li class="nav-header">Billings</li>                        
+              <!--  <li><a href="view_instances.php">View Security Groups</a></li>    -->              
+              <li><a href="instances.php#tag3">Create Volumes</a></li>
+              <!--  <li class="nav-header">Billings</li>                        
               <li><a href="#">MTD Costs</a></li>
               <li><a href="#">YTD Costs</a></li>
-              <li><a href="#">Send Invoices</a></li>
+              <li><a href="#">Send Invoices</a></li>  -->
               <li class="nav-header">Account</li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">AWS Credentials</a></li>
+              <!--  <li><a href="#">Profile</a></li>
+              <li><a href="#">AWS Credentials</a></li>  -->
               <li><a href="logout.php">Logout</a></li>
             </ul>
           </div><!--/.well -->
@@ -264,5 +264,15 @@ $ec2 = new AmazonEC2();
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="bootstrap.js"></script>
+    <script>var url = document.location.toString();
+if (url.match('#')) {
+    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+} 
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash;
+})
+</script>
   </body>
 </html>

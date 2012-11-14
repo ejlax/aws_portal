@@ -47,7 +47,7 @@ $ec2 = new AmazonEC2();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">AWS Portal</a>
+          <a class="brand" href="fluid.php">AWS Portal</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#"><i class="icon-home icon-black"></i>Home</a></li>
@@ -86,15 +86,15 @@ $ec2 = new AmazonEC2();
               <li><a href="backups.php">Backup Instances</a></li>              
               <li class="nav-header">Security Groups and Volumes</li>
               <li><a href="securitygroups.php">Create Security Group</a></li>
-              <li><a href="view_instances.php">View Security Groups</a></li>                
-              <li><a href="ebsvolumes.php">Create Volumes</a></li>
-              <li class="nav-header">Billings</li>                        
+              <!--  <li><a href="view_instances.php">View Security Groups</a></li>    -->              
+              <li><a href="instances.php#tab3">Create Volumes</a></li>
+              <!--  <li class="nav-header">Billings</li>                        
               <li><a href="#">MTD Costs</a></li>
               <li><a href="#">YTD Costs</a></li>
-              <li><a href="#">Send Invoices</a></li>
-              <li class="nav-header">Account</li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">AWS Credentials</a></li>
+              <li><a href="#">Send Invoices</a></li>  -->
+              <li class="nav-header">Account</li>  
+             <!--   <li><a href="#">Profile</a></li>
+              <li><a href="#">AWS Credentials</a></li>  -->
               <li><a href="logout.php">Logout</a></li>
             </ul>
           </div><!--/.well -->
