@@ -3,6 +3,11 @@ ob_start();
 session_start();
 include_once ('config/salt.php');
 include_once ('connect.php');
+/*if(isset($_GET['file']) && $_GET['file'] == ""){
+	$file = 'fluid.php';
+}else{
+	$file = $_GET['file'];
+}*/
 //echo $_SESSION['LAST_ACTIVITY']."<br>";
 //echo time()."<br>";
 //unset($_SESSION['LAST_ACTIVITY']);
@@ -35,14 +40,17 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				//header('location:login_form.php');
 				echo "check the log files, the user was not authenticated!";
 				}
-				if(isset($_GET['file'])){
-					//echo "SET!";
-					header('location:'.$_GET['file']);
+				if(isset($_GET['file']) && $_GET['file'] == ''){
+					echo "set.";
+					//header('location:fluid.php');
 				}else{
+					//echo "not set.";
+					header('location:'.$_GET['file']);
+					
 		//echo "Welcome " . $name[0]."&nbsp".$name[1]. "!<br>";
 		//echo "<a href='logout.php'>Log Out</a>";
 		//echo "not Set";
-		header('location:fluid.php');
+		//header('location:fluid.php');
 		}
 	}
 }
