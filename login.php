@@ -62,7 +62,7 @@ $error = 'Bad Username or Password. Please sign in again.';
     </div>
     <div class='alert alert-error'>
   <button type='button' class='close' data-dismiss='alert'>×</button>
-  <h4 align='center'>Uh Oh! "<?php echo $error;?></h4>
+  <h4 align='center'>Uh Oh! <?php echo $error;?></h4>
 		</div>
 	<div class='container'>
           <div class='hero-unit' align='center'>
