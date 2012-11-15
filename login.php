@@ -12,7 +12,7 @@ $error = 'Bad Username or Password. Please sign in again.';
 	}elseif(!isset($_GET['message'])){
 		$error = 'Something went wrong. Please sign in again.';
 	}
-echo" <!DOCTYPE html>
+?> <!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
@@ -62,7 +62,7 @@ echo" <!DOCTYPE html>
     </div>
     <div class='alert alert-error'>
   <button type='button' class='close' data-dismiss='alert'>×</button>
-  <h4 align='center'>Uh Oh! ".$error."</h4>
+  <h4 align='center'>Uh Oh! "<?php echo $error;?></h4>
 		</div>
 	<div class='container'>
           <div class='hero-unit' align='center'>
@@ -114,8 +114,44 @@ echo" <!DOCTYPE html>
 						</form>
 			      </div>
 			    </div>
+			   </div>
+			    <div class='accordion-group'>
+			    <div class='accordion-heading'>
+			      <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion2' href='#collapseThree'>
+			        Sign-Up
+			      </a>
+			    </div>
+			    <div id='collapseThree' class='accordion-body collapse'>
+			      <div class='accordion-inner'>
+      		<form method='post' action='sign-up.php' id='register'>
+			    <fieldset id='inputs'>
+			    	<input id='firstName' name='firstName' type='text' placeholder='First Name' autofocus required>
+			        <input id='lastName' name='lastName' type='text' placeholder='Last Name' required>
+			        <input id='email1' name='email1' type='email' placeholder='Email' required>
+			        <input id='email2' name='email2' type='email' placeholder='Verify Email' required>
+			        <input id='employeeId' name='employeeId' type='text' placeholder='Employee ID' required>   
+			        <input id='password' autocomplete='off' name='password' type='password' placeholder='Password' required>
+			    </fieldset>
+			    <fieldset id='select'>
+					<select class='select' name='costCenter' id='costCenter'> 
+						<option class='option' value=''>---Cost Center---</option>
+						<option class='option' value='69333'>Implementation Services</option>
+						<option class='option' value='69101'>Cloud Operations</option>
+						<option class='option' value='69501'>SIS Operations</option>
+						<option class='option' value='69555'>Quality Assurance</option>
+						<option class='option' value='69599'>Development</option>
+					</select>
+			    </fieldset>
+			    <fieldset id='actions'>
+			        <input type='submit' id='submit'  class='btn btn-primary' value='Register'>
+			    </fieldset>
+			</form>
+			      </div>
+			    </div>
 			  </div>
 			</div>
+		</div>	
+			
 
 		<hr>
 
@@ -132,6 +168,4 @@ echo" <!DOCTYPE html>
     <script src='js/bootstrap.js'></script>
 
   </body>
-</html>";
-
-?>
+</html>
