@@ -102,7 +102,7 @@ $error = 'Bad Username or Password. Please sign in again.';
 			    </div>
 			    <div id='collapseTwo' class='accordion-body collapse'>
 			      <div class='accordion-inner'>
-			        	<form class='form' method='post' action='pass-reset.php' id='password_reset'>
+			        	<form class='form' method='post' action='' id='password_reset'>
 						    <fieldset id='inputs'>
 						        <input id='employeeId' name='employeeId' type='text' placeholder='Employee ID' autofocus required><br>   
 						        <input id='new_password' name='new_password' type='password' placeholder='New Password' required>
@@ -112,6 +112,7 @@ $error = 'Bad Username or Password. Please sign in again.';
 						        <input type='submit' class='btn btn-danger' name='submit' value='Reset'>
 						    </fieldset>
 						</form>
+						<div id='response'><h5></h5></div>
 			      </div>
 			    </div>
 			   </div>
@@ -166,6 +167,19 @@ $error = 'Bad Username or Password. Please sign in again.';
     <!-- Placed at the end of the document so the pages load faster -->
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script src='js/bootstrap.js'></script>
+     <script>
+     $("#password_reset").submit(function(){
+        var formdata = $(this).serialize(); // Serialize all form data
+
+    // Post data to your PHP processing script
+    $.post( "pass-reset.php", formdata, function( data ) {
+        // Act upon the data returned, setting it to #success <div>
+        $("#response").html ( data );
+    });
+
+    return false; // Prevent the form from actually submitting
+});
+</script>
 
   </body>
 </html>
