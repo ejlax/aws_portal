@@ -46,12 +46,12 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				}elseif(isset($_GET['file'])){
 					//echo "not set.";
 					header('location:'.$_GET['file']);
-					}
+					}else{
 					
 		//echo "Welcome " . $name[0]."&nbsp".$name[1]. "!<br>";
 		//echo "<a href='logout.php'>Log Out</a>";
 		//echo "not Set";
-		header('location:fluid.php');
+		header('location:fluid.php');}
 		}
 	}
 
