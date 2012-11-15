@@ -41,8 +41,8 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				}else{
 		//echo "Welcome " . $name[0]."&nbsp".$name[1]. "!<br>";
 		//echo "<a href='logout.php'>Log Out</a>";
-		echo "not Set";
-		//header('location:fluid.php');
+		//echo "not Set";
+		header('location:fluid.php');
 		}
 	}
 }
