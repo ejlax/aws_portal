@@ -41,8 +41,8 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				echo "check the log files, the user was not authenticated!";
 				}
 				if(isset($_GET['file']) && $_GET['file'] == ''){
-					echo "set.";
-					//header('location:fluid.php');
+					//echo "set.";
+					header('location:fluid.php');
 				}elseif(isset($_GET['file'])){
 					//echo "not set.";
 					header('location:'.$_GET['file']);
