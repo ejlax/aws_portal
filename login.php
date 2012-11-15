@@ -87,7 +87,7 @@ $error = 'Bad Username or Password. Please sign in again.';
 												<input type='email' id='Form_Email' name='email' class='InputBox' required>
 												<label class='PasswordLabel'>Password</label>
 												<input type='password' id='Form_Password' name='password' class='InputBox Password' required>
-												<input type='hidden' name='file' value='".$file."'>
+												<input type='hidden' name='file' value='<?php if(isset($file)){echo $file;}?>'>
 											<input type='submit' name='submit' value='Sign In' class='btn btn-primary'>
 										</fieldset>
 									</form>
