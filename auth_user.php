@@ -35,10 +35,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 
 				//header('location:login_form.php');
 				echo "check the log files, the user was not authenticated!";
 				}
-		else{
+				if(isset($_GET['file'])){
+					//echo "SET!";
+					header('location:'.$_GET['file']);
+				}else{
 		//echo "Welcome " . $name[0]."&nbsp".$name[1]. "!<br>";
 		//echo "<a href='logout.php'>Log Out</a>";
-		header('location:fluid.php');
+		echo "not Set";
+		//header('location:fluid.php');
 		}
 	}
 }

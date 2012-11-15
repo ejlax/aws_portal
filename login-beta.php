@@ -44,7 +44,8 @@ $_SESSION['loginTime'] = $time;
 				//exit();
 				if (isset($_POST['file'])) {
 					$file = $_POST['file'];
-					header('location:auth_user.php'.$file);
+					//echo $file;
+					header('location:auth_user.php?file='.$file);
 					}else{
 						header('location:auth_user.php');
 					}

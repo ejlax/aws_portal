@@ -2,6 +2,7 @@
 ob_start();
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
+$file = $_GET['file'];
 if($_SESSION['message'] == 1 ){
 $error = 'Bad Username or Password. Please sign in again.';
 	}elseif($_GET['message'] == 2){
@@ -86,7 +87,7 @@ echo" <!DOCTYPE html>
 												<input type='email' id='Form_Email' name='email' class='InputBox' required>
 												<label class='PasswordLabel'>Password</label>
 												<input type='password' id='Form_Password' name='password' class='InputBox Password' required>
-												<input type='hidden' name='file' value=''>
+												<input type='hidden' name='file' value='".$file."'>
 											<input type='submit' name='submit' value='Sign In' class='btn btn-primary'>
 										</fieldset>
 									</form>

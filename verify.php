@@ -20,7 +20,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 	$arr=explode("/",$file);
 	$count=count($arr);
 	$file=$arr[$count-1];
-	header('Location:login.php?message=2');
+	header('Location:login.php?file='.$file.'&message=2');
 	exit();
 }
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 900)){

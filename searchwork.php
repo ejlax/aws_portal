@@ -305,9 +305,12 @@
 				foreach($response->body->reservationSet->item as $item){
 					$i++;
 				}
-				if($i == 0){
-					echo "There were no instances found for the criteria: Filter=Platform and Search Term=".$search;
+				if($search == 'linux' or $seach == 'Linux'){
+					echo "Unable to search by Platform for Linux due to AWS API constraints, please search again.";
+					//echo "There were no instances found for the criteria: Filter=Platform and Search Term=".$search;
 					exit();
+				}elseif($i===0){
+					echo "There were no instances found for the criteria: Filter=Platform and Search Term=".$search;
 				}
 				echo "<h5>".$i." Instances matched that query.</h5><br>";
 				echo "<div class='table'>";
@@ -707,8 +710,8 @@
 				}	
 				echo "</tbody></table></div>";
 	}
-	if ($_GET['filter'] == 3 and $search == 'linux') {
+	/*if ($_GET['filter'] == 3 and $search == 'linux') {
 		echo "Unable to search by Platform for Linux due to AWS API constraints, please search again.";
-	}
+	}*/
 	
 ?>
