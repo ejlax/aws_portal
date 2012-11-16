@@ -46,7 +46,7 @@
             <ul class="nav">
               <li class="active"><a href="#"><i class="icon-home icon-black"></i>Home</a></li>
               <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
             	<li class="dropdown">
